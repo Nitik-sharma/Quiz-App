@@ -1,0 +1,98 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body{
+    width:100%;
+    height:100vh;
+    background-image: linear-gradient(to right,#e66465 ,#9198e5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+#container{
+ max-width: 45%;
+   
+  background-color: whitesmoke;
+  box-shadow: 5px 10px #ee50c6;
+   border-radius: 20px;
+     
+}
+
+.container h1{
+    font-size: 35px;
+    font-weight: 500;
+    margin-bottom: 30px;
+    text-align: center;
+    color:	#66CDAA;
+}
+.mb-3{
+    margin-left: 10%;
+}
+
+.mb-3 .form-label{
+    font-size: 20px;
+    font-weight: 500;
+    
+}
+
+#inputPassword5,#Re-pass{
+    width:80%;
+    border-radius: 10px;
+}
+
+#inputPassword5::placeholder,#Re-pass::placeholder{
+ font-size: medium;
+ padding: 10px;
+ font-weight: 300;
+}
+
+.set{
+    width:100%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#btn{
+    width:40%;
+    padding: 10px;
+    margin-top: 20px;
+    font-size: large;
+border: none;
+border-radius: 3px;
+    margin-bottom: 30px;
+}
+
+#btn:hover{
+    background-color: #9198e5;
+}
+
+#exampleInputEmail1,#inputName{
+    width:80%;
+    border-radius: 10px;
+}
+#exampleInputEmail1::placeholder,#inputName::placeholder{
+    font-size: medium;
+    padding: 10px;
+    font-weight: 300;
+}
+
+.mb-3 label{
+    display: flex;
+    justify-content: space-between;
+    margin-right: 70px;
+
+}
+
+.validation{
+    font-size: small;
+    color:red;
+}
