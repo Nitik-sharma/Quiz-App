@@ -1,82 +1,51 @@
-const name = document.getElementById('inputName');
-const email = document.getElementById('exampleInputEmail1');
+var Fname = document.getElementById("Fname");
+var email = document.getElementById("email");
+var pass = document.getElementById("password");
+var reepass = document.getElementById("Re-pass");
 
-const password = document.getElementById('inputPassword5');
-const rePass = document.getElementById('Re-pass');
+const btn = document.getElementById("singUp");
 
-const btn = document.getElementById('btn');
+function store() {
+  var nameval = Fname.value;
+  var emailval = email.value;
+  var passval = pass.value;
+  var reepassVal = reepass.value;
 
-const nameError = document.getElementById('name');
-const emailError=document.getElementById('email-error');
+  if (
+    nameval.length === 0 ||
+    emailval.length === 0 ||
+    passval.length === 0 ||
+    reepassVal.length === 0
+  ) {
+    alert("please fill form correctly");
+    return false;
+  }
 
-const passwordError=document.getElementById('password-error');
-const rePassError=document.getElementById('newPassword');
-const valid = () => {
-    const namevalue = name.value.trim();
-    const emailvalue = email.value.trim();
-    const passwordValue = password.value.trim();
-   
-    if ((namevalue === "" || namevalue === null)  ) {
-        nameError.innerHTML = "Enter your name";
-       
-      
+  if (!isEmail(emailval)) {
+    alert("Email is not valid");
+    return false;
+  }
 
-        name.style.border="2px solid red";
-      
-      
-    }else{
-        localStorage.setItem("Name",namevalue);
-    }
-    
-    if(!isEmail(emailvalue)||(emailvalue === "" || emailvalue === null)){
-        emailError.innerHTML="Enter your correct E-mail";
-        email.style.border="2px solid red";
+  if (passval !== reepassVal) {
+    alert("Password and Ree-Password Must be Same");
+    return false;
+  }
 
-       
-    }else{
-        localStorage.setItem("Email",emailvalue);
-    }
-    
+  localStorage.setItem("E-mail", emailval);
+  localStorage.setItem("Password", passval);
 
-
-   
+  //   console.log(nameval, emailval, passval, reepassVal);
 }
 
 function isEmail(email) {
-	return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
+  return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+    email
+  );
 }
 
-const isPassword=()=>{
-    const passValue=password.value.trim();
-    const rePassValue = rePass.value.trim();
-
-    if(passValue===""||passValue===null){
-        passwordError.innerHTML="Choose a Password";
-        password.style.border="2px solid red";
-    }else if(passValue.length<4){
-        passwordError.innerHTML="Password must br more than 4 character";
-        password.style.border="2px solid red";
-    }else{
-        localStorage.setItem("Password",passValue);
-    }
-
-    if(rePassValue===""||rePassValue===null){
-        rePassError.innerHTML="Enter a password for conformation";
-        rePass.style.border="2px solid red";
-    }else if(rePassValue!==passValue){
-       rePassError.innerHTML="Enter a same password which you choose";
-        rePass.style.border="2px solid red";
-    }else{
-        localStorage.setItem("Re-Password",rePassValue);
-    }
-
-    
-}
-
-
-btn.addEventListener('click', (e) => {
-    
-    valid();
-    isPassword();
-    confirm("Your Account is created");
-})
+btn.addEventListener("click", (e) => {
+  e.preventDefault();
+  store();
+  console.log("funcation came back");
+  window.location.href = "login.html";
+});
